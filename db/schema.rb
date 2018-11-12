@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_150106) do
+ActiveRecord::Schema.define(version: 2018_11_12_153912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "meetup_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meetup_id"], name: "index_attendances_on_meetup_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
 
   create_table "meetups", force: :cascade do |t|
     t.string "location"
@@ -26,6 +35,17 @@ ActiveRecord::Schema.define(version: 2018_11_12_150106) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_meetups_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "attendance_id"
+    t.bigint "user_id"
+    t.integer "rating"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attendance_id"], name: "index_reviews_on_attendance_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,5 +61,9 @@ ActiveRecord::Schema.define(version: 2018_11_12_150106) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "meetups"
+  add_foreign_key "attendances", "users"
   add_foreign_key "meetups", "users"
+  add_foreign_key "reviews", "attendances"
+  add_foreign_key "reviews", "users"
 end
