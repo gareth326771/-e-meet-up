@@ -1,0 +1,9 @@
+this is <%= @meetup.location %>
+
+<!-- this form passes meetup and user id as hidden to create attendance instance -->
+<div class="container">
+  <%= simple_form_for(@attendance) do |f| %>
+    <%= f.hidden_field :meetup_id, value: @meetup.id %>
+    <%= f.submit %>
+  <% end %>
+</div>
