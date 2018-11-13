@@ -1,23 +1,21 @@
 <div class="banner">
   <div class="banner-content">
-    <h1>Host An E-Meet</h1>
+    <h1>Edit The E-Meet</h1>
   </div>
 </div>
 
 <div class="container">
     <div class="row">
     <div class="col-md-4 col-md-offset-4">
-  <p><%= simple_form_for [@meetup] do |f|  %>
+  <p><%= simple_form_for @meetup do |f|  %>
     <%= f.input :location %><br>
     <%= f.input :date %><br>
     <%= f.input :game %><br>
     <%= f.input :price %><br>
     <%= f.input :capacity %><br>
     <%= f.input :description %><br>
-    <%= f.submit "List E-Meet!", class: "btn btn-primary" %>
+    <%= f.submit "Update E-Meet!", class: "btn btn-primary" %>
     <% end %></p>
       </div>
    </div>
-</div>
-
-
+</d
