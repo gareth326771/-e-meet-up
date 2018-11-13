@@ -8,6 +8,19 @@ class MeetupsController < ApplicationController
     @attendance = Attendance.new
   end
 
+  def edit
+    @meetup = Meetup.find(params[:id])
+  end
+
+  def update
+    @meetup = Meetup.find(params[:id])
+    if @meetup.update(meetup_params)
+      redirect_to meetup_path(@meetup)
+    else
+      render :edit
+    end
+  end
+
   def collection
     @meetups_last_10 = Meetup.last(10)
   end

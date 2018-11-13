@@ -14,7 +14,7 @@
   </div>
 
 
-  <!-- this form passes meetup and user id as hidden to create attendance instance -->
+
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
@@ -55,12 +55,18 @@
           <h2>price here</h2>
 
         </div>
+
+        <!-- this form passes meetup and user id as hidden to create attendance instance -->
         <div class="attend-button text-right">
 
           <%= simple_form_for(@attendance) do |f| %>
           <%= f.hidden_field :meetup_id, value: @meetup.id %>
           <%= f.submit 'Book' , class: 'btn mikes-btn' %>
           <% end %>
+        </div>
+          <br>
+        <div class="attend-button text-right">
+          <%= link_to "Edit This Meetup", edit_meetup_path(@meetup), class: 'btn mikes-btn' %>
         </div>
 
       </div>
