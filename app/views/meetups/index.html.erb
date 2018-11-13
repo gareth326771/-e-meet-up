@@ -1,6 +1,74 @@
-this is the index for meetup
-
-<% @meetups.each do |e| %>
-  <br>
-  <%= e.location %>
-<% end %>
+<h2>Search results:</h2>
+<div class="container-fluid">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner row w-100 mx-auto">
+    	<div class="carousel-item col-md-4 active">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/1920/1079/?random');">
+          <div class="card-body">
+            <h4 class="card-title">London</h4>
+            <p class="card-description">Our event</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <a class="card-link" href="#" ></a>
+      </div>
+    	<% @meetups.each do |meetup| %>
+      <div class="carousel-item col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/1920/1080/?random');">
+          <div class="card-body">
+            <h4 class="card-title"><%= meetup.location %></h4>
+            <p class="card-description"><%= meetup.game %></p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <a class="card-link" href="#" ></a>
+      </div>
+      <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<h2>Top users near you</h2>
+<div class="container-fluid">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner row w-100 mx-auto">
+    	<div class="carousel-item col-md-4 active">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/1920/1079/?random');">
+          <div class="card-body">
+            <h4 class="card-title">London</h4>
+            <p class="card-description">Our event</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <a class="card-link" href="#" ></a>
+      </div>
+    	<% @meetups.each do |meetup| %>
+      <div class="carousel-item col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/1920/1080/?random');">
+          <div class="card-body">
+            <h4 class="card-title"><%= meetup.location %></h4>
+            <p class="card-description"><%= meetup.game %></p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <a class="card-link" href="#" ></a>
+      </div>
+      <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
