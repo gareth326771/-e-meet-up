@@ -1,0 +1,11 @@
+<% @meetups.each do |meetup| %>
+	<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://cdn5.qutee.com/wp-content/uploads/2016/11/265611775gaming.jpg');">
+	  <div class="card-category"><%= meetup.location %></div>
+	  <div class="card-description">
+	    <h2><%= meetup.game %></h2>
+	    <p><%= meetup.price %></p>
+	  </div>
+	  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+	  <a class="card-link" href="#" ></a>
+	</div>
+<% end %>
