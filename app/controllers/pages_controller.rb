@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def last_10
+
+  end
 end
