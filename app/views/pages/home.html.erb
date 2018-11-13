@@ -1,2 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h2>Find an e-Meet</h2>
+       <%= simple_form_for @meetups do |f| %>
+       <%= f.input :location %>
+       <%= f.input :date %>
+       <%= f.input :type %>
+    </div>
+  </div>
+</div>
+
+<%= form_tag meetups_path, method: :get do %>
+          <%= text_field_tag :search,
+            params[:search],
+            class: "form-control",
+            placeholder: "Location" %>
+            <%= date_field_tag(:datetime_ida, Date.today, class: 'form-control') %>
+            <%= select_tag :search,
+            "<option>LAN</option><option>Tournamount</option><option>Private</option>".html_safe,
+            class: "form-control",
+            placeholder: "Type of event" %>
+            <%=  submit_tag 'Search', class: 'mikes-btn' %>
+        <% end %>
