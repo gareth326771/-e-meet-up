@@ -1,0 +1,33 @@
+<div class="banner">
+  <div class="banner-content">
+    <h1>Host An E-Meet</h1>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+  <p><%= simple_form_for [@meetup] do |f|  %>
+    <%= f.input :location %><br>
+    <%= f.input :date %><br>
+    <%= f.input :game %><br>
+    <%= f.input :price %><br>
+    <%= f.input :capacity %><br>
+    <%= f.input :description %><br>
+    <%= f.submit "List E-Meet!", class: "btn btn-primary" %>
+    <% end %></p>
+      </div>
+   </div>
+</div>
+
+<!--
+t.string "location"
+    t.bigint "user_id"
+    t.integer "capacity"
+    t.date "date"
+    t.text "description"
+    t.string "game"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_meetups_on_user_id" -->
