@@ -1,9 +1,69 @@
-this is <%= @meetup.location %>
-
-<!-- this form passes meetup and user id as hidden to create attendance instance -->
 <div class="container">
-  <%= simple_form_for(@attendance) do |f| %>
-    <%= f.hidden_field :meetup_id, value: @meetup.id %>
-    <%= f.submit %>
-  <% end %>
-</div>
+  <div class="row">
+    <div class="col-sm-6 search-bar">
+      <%= form_tag meetups_path, method: :get do %>
+      <%= text_field_tag :search,
+      params[:search],
+      class: "form-control",
+        placeholder: "Location" %>
+        <% end %>
+
+      </div>
+      <div class="col-sm-6"></div>
+    </div>
+  </div>
+
+
+  <!-- this form passes meetup and user id as hidden to create attendance instance -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <div class="meetup-images">
+          <img src="https://source.unsplash.com/collection/1411369/1200x400" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3>Event Details</h3>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="fas fa-trophy"></i><span id="event-details-list"><%= @meetup.game %></span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-location-arrow"><span id="event-details-list"></i><%= @meetup.location %></span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-table"></i><span id="event-details-list"><%= @meetup.date %></span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-users"></i><span id="event-details-list"><%= @meetup.capacity %></span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-edit"></i><span id="event-details-list"><%= @meetup.description %></span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-pound-sign"></i><span id="event-details-list"><%= @meetup.price %></span>
+          </li>
+
+        </ul>
+
+
+      </div>
+      <div class="col-sm-6">
+        <div class="price text-right">
+          <h2>price here</h2>
+
+        </div>
+        <div class="attend-button text-right">
+
+          <%= simple_form_for(@attendance) do |f| %>
+          <%= f.hidden_field :meetup_id, value: @meetup.id %>
+          <%= f.submit 'Book' , class: 'btn mikes-btn' %>
+          <% end %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
