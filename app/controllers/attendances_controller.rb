@@ -16,5 +16,9 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def show
+    @attendance = Attendance.find(params[:id])
+  end
+
 
 end
