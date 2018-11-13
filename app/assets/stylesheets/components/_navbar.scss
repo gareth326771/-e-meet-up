@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 /* Logo */
@@ -85,4 +86,9 @@
   background: -webkit-linear-gradient(bottom right, #fcfeff ,#d8d8d8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+#navbar-container {
+  padding: 0;
+  margin: 0;
 }

@@ -1,4 +1,4 @@
-<div class="container">	
+<div class="container">
 	<div class="col-md-4 col-md-offset-2">
 		<h2>Attendance confirmation</h2>
 		<ul>
@@ -13,6 +13,7 @@
 		<ul>
 			<% @attendance.meetup.attendances.each do |attendance| %>
 				<li><%= attendance.user.username %></li>
+        <%= raise %>
 			<% end %>
 		</ul>
 	</div>
