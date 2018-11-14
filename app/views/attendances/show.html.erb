@@ -1,19 +1,39 @@
-<div class="container">	
-	<div class="col-md-4 col-md-offset-2">
-		<h2>Attendance confirmation</h2>
-		<ul>
-			<li>Location - <%= @attendance.meetup.location %></li>
-			<li>Date - <%= @attendance.meetup.date %></li>
-			<li>Game - <%= @attendance.meetup.game %></li>
-			<li>£<%= @attendance.meetup.price %></li>
-		</ul>
-	</div>
-	<div class="col-md-4">
-		<h3>People attending</h3>
-		<ul>
-			<% @attendance.meetup.attendances.each do |attendance| %>
-				<li><%= attendance.user.username %></li>
-			<% end %>
-		</ul>
-	</div>
+<div class= "background-attendance-image">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <h2>Attendance confirmation</h2>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-4 col-md-offset-2">
+        <div class="details">
+         <h3>Details:</h3>
+          <ul>
+            <li>Location - <%= @attendance.meetup.location %></li>
+            <li>Date - <%= @attendance.meetup.date %></li>
+            <li>Game - <%= @attendance.meetup.game %></li>
+            <li>£<%= @attendance.meetup.price %></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="people_attending">
+          <h3>People attending</h3>
+          <ul>
+            <% @attendance.meetup.attendances.each do |attendance| %>
+              <li><%= attendance.user.username %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </div>
+
