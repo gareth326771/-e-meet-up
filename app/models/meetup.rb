@@ -4,6 +4,7 @@ class Meetup < ApplicationRecord
   has_many :reviews, through: :attendance
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+  mount_uploader :photo, PhotoUploader
   # validates :user, presence: true
   # validates :location, presence: true
   # validates :capacity, presence: true, numericality: true
