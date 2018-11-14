@@ -1,7 +1,7 @@
 <div class="container-fluid" id="navbar-container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="navbar-wagon">
+  <div class="row navbar-row navbar-not-home">
+
+      <div class="navbar-wagon <%= request.original_fullpath %>">
         <!-- Logo -->
         <%= link_to root_path, class: "navbar-wagon-brand" do %>
         <i class="fas fa-gamepad"></i>
@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-    </div>
+
   </div>
 </div>
 
