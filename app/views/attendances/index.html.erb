@@ -1,0 +1,48 @@
+<h2>Search results:</h2>
+<ul>
+<% @user.attendances.each do |attendance| %>
+<li><%= attendance.meetup.user.username %></li>
+<% end %>
+</ul>
+
+
+<h2>Search results:</h2>
+<div class="container-fluid">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner row w-100 mx-auto">
+      <div class="carousel-item col-md-4 active">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/1920/1075/?random');">
+          <div class="card-body">
+            <h4 class="card-title"></h4>
+            <p class="card-description">Our event</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <a class="card-link" href="#" ></a>
+      </div>
+
+      <% @user.attendances.each do |attendance| %>
+      <div class="carousel-item col-md-4">
+        <%= link_to attendance_path(attendance.id) do %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/<%= rand(1900..1920) %>/1080/?random');">
+          <div class="card-body">
+            <h4 class="card-title"><%= attendance.meetup.location %></h4>
+            <p class="card-description"><%= attendance.meetup.game %></p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
