@@ -48,7 +48,7 @@ class MeetupsController < ApplicationController
   private
 
   def meetup_params
-    params.require(:meetup).permit(:location, :capacity, :date, :description, :price, :game)
+    params.require(:meetup).permit(:location, :capacity, :date, :description, :price, :game, :photo)
 
   end
 

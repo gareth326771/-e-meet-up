@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-sm-12 text-center">
         <div class="meetup-images">
-          <img src="https://source.unsplash.com/collection/1411369/1200x400" alt="">
+          <%= cl_image_tag @meetup.photo, crop: :fill %>
         </div>
       </div>
     </div>
