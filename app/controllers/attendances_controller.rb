@@ -1,4 +1,10 @@
 class AttendancesController < ApplicationController
+
+  def index
+    @user = current_user
+    @attendances = Attendance.all
+  end
+
   def new
     @attendance = Attendance.new
   end
