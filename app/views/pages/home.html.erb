@@ -63,23 +63,18 @@
       <h2>Find your e-vent!</h2><br>
       <p>The easiest way to find your next lan party!</p>
     </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-         <%= form_tag meetups_path, method: :get do %>
-            <%= text_field_tag :search,
-              params[:search],
-              class: "form-control meetup_location",
-              placeholder: "Search for location..." %>
-          <% end %>
-          <span class="input-group-btn">
-            <%= link_to "Search", meetups_path, html_options = { :class=>"btn btn-primary" } %>
-          </span>
-
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <%= form_tag meetups_path, :class=>"form-inline", method: :get do %>
+              <%= text_field_tag :location, params[:location], class: "form-control", placeholder: "Search for location..." %>
+              <%= date_field :date, params[:date], :class =>"form-control" %>
+              <span class="input-group-btn">
+                <%= button_tag "Search", :value => "submit", :class=>"btn btn-primary" %>
+              </span>
+            <% end %>
+          </div>
         </div>
-
-
-        </div>
-       </div>
+      </div>
     </div>
 </header>
