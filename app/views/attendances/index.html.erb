@@ -1,20 +1,68 @@
 <div class="container">
-<h2>Your upcoming E-meets</h2>
+  <h2>Your upcoming Attendances</h2>
   <div class="row">
     <% @user.attendances.each do |attendance| %>
-      <div class="col-md-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/<%= rand(1900..1920) %>/1080/?random');">
-          <div class="card-body">
-            <h4 class="card-title"><%= attendance.meetup.location %></h4>
-            <p class="card-description"><%= attendance.meetup.game %></p>
-            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-            <p class="price">£<%= attendance.meetup.price %></p>
-          </div>
-          <%= link_to attendance_path(attendance.id) do %>
-            <div class="link"></div>
-          <% end %>
+    <div class="col-md-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/<%= rand(1900..1920) %>/1080/?random');">
+        <div class="card-body">
+          <h4 class="card-title"><%= attendance.meetup.location %></h4>
+          <p class="card-description"><%= attendance.meetup.game %></p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          <p class="price">£<%= attendance.meetup.price %></p>
         </div>
+        <%= link_to attendance_path(attendance.id) do %>
+        <div class="link"></div>
+        <% end %>
+        <%= link_to attendance, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
       </div>
+    </div>
     <% end %>
   </div>
 </div>
+
+<div class="container">
+  <h2>Your upcoming Meetups</h2>
+  <div class="row">
+    <% @user.meetups.each do |meetup| %>
+      <% if meetup.photo.blank? %>
+      <div class="col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/collection/625771/1600x900');">
+          <div class="card-body">
+            <h4 class="card-title"><%= meetup.location %></h4>
+            <p class="card-description"><%= meetup.game %></p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            <p class="price">£<%= meetup.price %></p>
+          <%= link_to meetup_path(meetup.id) do %>
+            <div class="link">
+            </div>
+          <% end %>
+          <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <div class="col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path meetup.photo.url(:thumnail) %>');">
+          <div class="card-body">
+            <h4 class="card-title"><%= meetup.location %></h4>
+            <p class="card-description"><%= meetup.game %></p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            <p class="price">£<%= meetup.price %></p>
+          <%= link_to meetup_path(meetup.id) do %>
+          <div class="link">
+          </div>
+          <% end %>
+          <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+https://source.unsplash.com/collection/625771/1600x900
+
+
+
+
+
