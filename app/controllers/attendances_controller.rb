@@ -2,7 +2,8 @@ class AttendancesController < ApplicationController
 
   def index
     @user = current_user
-    @attendances = Attendance.all
+    @attendances = policy_scope(Attendance).where(user: current_user)
+    authorize @attendances
   end
 
   def new
@@ -13,6 +14,7 @@ class AttendancesController < ApplicationController
     id = params["attendance"]["meetup_id"].to_i
     @attendance = Attendance.new(meetup_id: id)
     @attendance.user_id = current_user.id
+    authorize @attendance
     if @attendance.save
       redirect_to attendance_path(@attendance)
     else
@@ -23,7 +25,6 @@ class AttendancesController < ApplicationController
 
   def show
     @attendance = Attendance.find(params[:id])
+    authorize @attendance
   end
-
-
 end
