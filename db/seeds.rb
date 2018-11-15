@@ -16,3 +16,8 @@
 # Attendance.create(meetup_id: 6, user_id: 3,)
 # Attendance.create(meetup_id: 6, user_id: 2,)
 # Attendance.create(meetup_id: 6, user_id: 1,)
+Meetup.create(user_id: 2, location: "london")
+Meetup.create(user_id: 2, location: "london")
+Meetup.create(user_id: 2, location: "london")
+Meetup.create(user_id: 2, location: "london")
+Meetup.create(user_id: 2, location: "london")

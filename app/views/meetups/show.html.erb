@@ -67,9 +67,16 @@
             <% end %>
           <% end %>
           </div><br>
-          <div class="attend-button text-right">
-            <%= link_to "Edit This Meetup", edit_meetup_path(@meetup), class: 'btn mikes-btn' %>
-          </div>
+
+          <% if policy(@meetup).edit? %>
+            <div class="attend-button text-right">
+              <%= link_to "Edit This Meetup", edit_meetup_path(@meetup), class: 'btn mikes-btn' %>
+            </div>
+          <% end %>
+
+
         </div>
       </div>
     </div>
+
+
