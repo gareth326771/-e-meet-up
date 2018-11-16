@@ -1,5 +1,7 @@
 class MeetupsController < ApplicationController
   def index
+
+
     @meetups = policy_scope(Meetup)
     #@meetups = Meetup.all
     authorize @meetups
