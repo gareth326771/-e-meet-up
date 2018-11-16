@@ -3,7 +3,7 @@
   <div class="row">
     <% @user.attendances.each do |attendance| %>
     <div class="col-md-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/<%= rand(1900..1920) %>/1080/?random');">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dcqopgfjo/image/upload/v1542370088/non-pic.jpg');">
         <div class="card-body">
           <h4 class="card-title"><%= attendance.meetup.location %></h4>
           <p class="card-description"><%= attendance.meetup.game %></p>
@@ -26,7 +26,7 @@
     <% @user.meetups.each do |meetup| %>
       <% if meetup.photo.blank? %>
       <div class="col-md-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/collection/625771/1600x900');">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dcqopgfjo/image/upload/v1542370088/non-pic.jpg');">
           <div class="card-body">
             <h4 class="card-title"><%= meetup.location %></h4>
             <p class="card-description"><%= meetup.game %></p>
@@ -59,8 +59,8 @@
       <% end %>
     <% end %>
   </div>
+  <br><br><br>
 </div>
-https://source.unsplash.com/collection/625771/1600x900
 
 
 
