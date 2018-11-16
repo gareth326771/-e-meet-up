@@ -7,82 +7,93 @@
 <% end %>
 <% results = Meetup.near(params[:location], 10).map { |x| x } %>
 <% if results.count >= 1 && results.first.date.to_s == params[:date].first.to_s  %>
-  <h2>Search results:</h2>
-  <div class="container-fluid">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner row w-100 mx-auto">
-      	<div class="carousel-item col-md-4 active">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/1920/1075/?random');">
-            <div class="card-body">
-              <h4 class="card-title"><%= results.first.location %></h4>
-              <p class="card-description"><%= results.first.description %></p>
-              <p class="card-text"><small class="text-muted"></small><%= results.first.date %></p>
-            </div>
-          </div>
-          <a class="card-link" href="#" ></a>
+<div class="container search-result">
+  <h2>Search results:</h2><br>
+</div>
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner row w-100 mx-auto">
+     <div class="carousel-item col-md-4 active">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= results.first.photo %>');">
+        <div class="card-body">
+          <h4 class="card-title"><%= results.first.location %></h4>
+          <p class="card-description"><%= results.first.description %></p>
+          <p class="card-text"><small class="text-muted"></small><%= results.first.date %></p>
         </div>
+      </div>
+      <a class="card-link" href="#" ></a>
+    </div>
 
-        <% results[1..-1].each do |meetup| %>
-        <div class="carousel-item col-md-4">
-          <%= link_to meetup_path(meetup) do %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/<%= rand(1900..1920) %>/1080/?random')">
-            <div class="card-body">
-              <h4 class="card-title"><%= meetup.location %></h4>
-              <p class="card-description"><%= meetup.game %></p>
-              <p class="card-text"><small class="text-muted"><%= meetup.date %></small></p>
-            </div>
+    <% results[1..-1].each do |meetup| %>
+    <div class="carousel-item col-md-4">
+      <%= link_to meetup_path(meetup) do %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= meetup.photo %>')">
+        <div class="card-body">
+          <h4 class="card-title"><%= meetup.location %></h4>
+          <p class="card-description"><%= meetup.game %></p>
+          <p class="card-text"><small class="text-muted"><%= meetup.date %></small></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+</div>
+<div class="container search-result">
+  <h2>Other Meet-ups</h2><br>
+
+</div>
+<div class="container">
+  <div class="row home-page-meetups">
+    <% @meetups.each do |meetup| %>
+    <% if meetup.photo.blank? %>
+    <div class="col-md-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dcqopgfjo/image/upload/v1542370088/non-pic.jpg');">
+        <div class="card-body">
+          <h4 class="card-title"><%= meetup.location %></h4>
+          <p class="card-description"><%= meetup.game %></p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          <p class="price">£<%= meetup.price %></p>
+          <%= link_to meetup_path(meetup.id) do %>
+          <div class="link">
           </div>
           <% end %>
+          <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
         </div>
-        <% end %>
       </div>
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
-  </div>
-  <h2>Top users near you</h2>
-  <div class="container-fluid">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner row w-100 mx-auto">
-      	<div class="carousel-item col-md-4 active">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/1920/1079/?random');">
-            <div class="card-body">
-              <h4 class="card-title">London</h4>
-              <p class="card-description">Our event</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
+    <% else %>
+    <div class="col-md-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path meetup.photo.url(:thumnail) %>');">
+        <div class="card-body">
+          <h4 class="card-title"><%= meetup.location %></h4>
+          <p class="card-description"><%= meetup.game %></p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          <p class="price">£<%= meetup.price %></p>
+          <%= link_to meetup_path(meetup.id) do %>
+          <div class="link">
           </div>
-          <a class="card-link" href="#" ></a>
+          <% end %>
+          <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
         </div>
-      	<% @meetups.each do |meetup| %>
-        <div class="carousel-item col-md-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/<%= rand(1900..1920) %>/1080/?random');">
-            <div class="card-body">
-              <h4 class="card-title"><%= meetup.location %></h4>
-              <p class="card-description"><%= meetup.game %></p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-          <a class="card-link" href="#" ></a>
-        </div>
-        <% end %>
       </div>
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
+    <% end %>
+    <% end %>
   </div>
+  <br><br><br>
+</div>
+
 <% else %>
 <div class="container">
   <h2>Meet-ups</h2>
@@ -92,39 +103,39 @@
 <div class="container">
   <div class="row">
     <% @meetups.each do |meetup| %>
-      <% if meetup.photo.blank? %>
-      <div class="col-md-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dcqopgfjo/image/upload/v1542370088/non-pic.jpg');">
-          <div class="card-body">
-            <h4 class="card-title"><%= meetup.location %></h4>
-            <p class="card-description"><%= meetup.game %></p>
-            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-            <p class="price">£<%= meetup.price %></p>
-          <%= link_to meetup_path(meetup.id) do %>
-            <div class="link">
-            </div>
-          <% end %>
-          <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
-          </div>
-        </div>
-      </div>
-      <% else %>
-      <div class="col-md-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path meetup.photo.url(:thumnail) %>');">
-          <div class="card-body">
-            <h4 class="card-title"><%= meetup.location %></h4>
-            <p class="card-description"><%= meetup.game %></p>
-            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-            <p class="price">£<%= meetup.price %></p>
+    <% if meetup.photo.blank? %>
+    <div class="col-md-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dcqopgfjo/image/upload/v1542370088/non-pic.jpg');">
+        <div class="card-body">
+          <h4 class="card-title"><%= meetup.location %></h4>
+          <p class="card-description"><%= meetup.game %></p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          <p class="price">£<%= meetup.price %></p>
           <%= link_to meetup_path(meetup.id) do %>
           <div class="link">
           </div>
           <% end %>
           <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
-          </div>
         </div>
       </div>
-      <% end %>
+    </div>
+    <% else %>
+    <div class="col-md-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path meetup.photo.url(:thumnail) %>');">
+        <div class="card-body">
+          <h4 class="card-title"><%= meetup.location %></h4>
+          <p class="card-description"><%= meetup.game %></p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          <p class="price">£<%= meetup.price %></p>
+          <%= link_to meetup_path(meetup.id) do %>
+          <div class="link">
+          </div>
+          <% end %>
+          <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
     <% end %>
   </div>
   <br><br><br>

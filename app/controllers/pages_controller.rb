@@ -4,5 +4,4 @@ class PagesController < ApplicationController
   def home
     @meetups = Meetup.all
   end
-
 end
