@@ -77,5 +77,62 @@
     </div>
   </div>
 <% else %>
-  <h1>No results found</h1>
+<div class="container">
+  <h2>Meet-ups</h2>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @meetups.each do |meetup| %>
+      <% if meetup.photo.blank? %>
+      <div class="col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dcqopgfjo/image/upload/v1542370088/non-pic.jpg');">
+          <div class="card-body">
+            <h4 class="card-title"><%= meetup.location %></h4>
+            <p class="card-description"><%= meetup.game %></p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            <p class="price">£<%= meetup.price %></p>
+          <%= link_to meetup_path(meetup.id) do %>
+            <div class="link">
+            </div>
+          <% end %>
+          <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <div class="col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path meetup.photo.url(:thumnail) %>');">
+          <div class="card-body">
+            <h4 class="card-title"><%= meetup.location %></h4>
+            <p class="card-description"><%= meetup.game %></p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            <p class="price">£<%= meetup.price %></p>
+          <%= link_to meetup_path(meetup.id) do %>
+          <div class="link">
+          </div>
+          <% end %>
+          <%= link_to meetup, method: :delete, class: "btn btn-sm delete-icon" do %> <i class="fas fa-trash-alt"></i><span class="bold"></span> <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <br><br><br>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <% end %>

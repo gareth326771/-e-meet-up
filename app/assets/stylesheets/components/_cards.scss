@@ -9,6 +9,12 @@
   position: relative;
   box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
   margin-bottom: 5px;
+  h4 {
+    font-size: 18px;
+    width: 180px;
+    padding-top: 0;
+    margin-top: 0;
+  }
 
 }
 .link {
@@ -20,9 +26,12 @@
 }
 .price {
   position: absolute;
-  right: 10px;
+  right: 20px;
   bottom: 10px;
-  padding-bottom: 0px;
+  padding-bottom: 0;
+  font-size: 34px;
+  margin-bottom: 0;
+  font-weight: bold;
 }
 .delete-icon {
   position: absolute;
