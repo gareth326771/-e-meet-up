@@ -1,10 +1,8 @@
 class MeetupsController < ApplicationController
   def index
-
     @meetups = policy_scope(Meetup)
     #@meetups = Meetup.all
     authorize @meetups
-
   end
 
   def show
@@ -55,7 +53,5 @@ class MeetupsController < ApplicationController
 
   def meetup_params
     params.require(:meetup).permit(:location, :capacity, :date, :description, :price, :game, :photo)
-
   end
-
 end

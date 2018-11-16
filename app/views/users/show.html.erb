@@ -1,2 +1,44 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div>
+    <header class="bg-image-full non-homepage" id="profile-header">
+          <h2>Welcome To Your Profile Page</h2><br>
+          <%= cl_image_tag @user.photo, class: "avatar-large profile-page-avatar", crop: :fill, width: 200, height: 200 %>
+
+    </header>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+  <div class="container user-details-show">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-1">
+        <h3>Event Details</h3>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="fas fa-trophy"></i><span id="event-details-list"><%= current_user.username %> </span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-location-arrow"><span id="event-details-list"></i><%= current_user.username%> </span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-table"></i><span id="event-details-list"><%= current_user.username %></span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-users"></i><span id="event-details-list"><%= current_user.username %></span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-edit"></i><span id="event-details-list"><%= current_user.username %></span>
+          </li>
+          <li class="list-group-item">
+            <i class="fas fa-pound-sign"></i><span id="event-details-list"><%= current_user.username %></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
