@@ -5,7 +5,4 @@ class PagesController < ApplicationController
     @meetups = Meetup.all
   end
 
-  def last_10
-
-  end
 end

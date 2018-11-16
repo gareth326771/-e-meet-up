@@ -1,15 +1,15 @@
-// Specific CSS for your home-page
-#homepage-header {
-  height: 100vh;
+#profile-header {
+  height: 50vh;
   background-size: cover;
   width: 100vw;
   margin: 0;
   padding: 0;
+  padding-bottom: 20px;
+  text-align: center;
   background-image: url('https://res.cloudinary.com/dcqopgfjo/image/upload/v1542209401/mouse.jpg'), linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
 
   h2  {
     margin: 0;
-    text-align: left;
     padding-top: 20vh;
     color: white;
   }
@@ -18,7 +18,9 @@
     color: white;
   }
 }
-.home-page-search-btn {
+.profile-page-avatar {
+  text-align: center;
+  border-radius: 50%;
   margin: 0;
   padding: 0;
 }
@@ -26,6 +28,9 @@
 header {
   position: absolute;
   top: 0;
-  z-index: -1;
 }
 
+.user-details-show {
+  position: absolute;
+  top: 60vh;
+}
