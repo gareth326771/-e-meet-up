@@ -1,22 +1,20 @@
-
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <%= form_tag meetups_path, :class=>"form-inline meetups-page-search", method: :get do %>
-        <%= text_field_tag :location, params[:location], class: "form-control", placeholder: "Search for location..." %>
-        <%= date_field :date, params[:date], :class =>"form-control" %>
-        <span class="input-group-btn">
-          <%= button_tag "Search", :value => "submit", :class=>"btn btn-primary" %>
-        </span>
-      <% end %>
-
+      <div class="input-group">
+        <%= form_tag meetups_path, :class=>"form-inline meetups-page-search", method: :get do %>
+          <%= text_field_tag :location, params[:location], class: "form-control", placeholder: "Search for location..." %>
+          <%= date_field_tag :date, params[:date], :class =>"form-control" %>
+          <span class="input-group-btn">
+            <%= button_tag "Search", :value => "submit", :class=>"btn btn-primary" %>
+          </span>
+        <% end %>
+        </div>
     </div>
-
   </div>
-
 </div>
 <% results = Meetup.near(params[:location], 10).map { |x| x } %>
-<% if results.count >= 1 && results.first.date.to_s == params[:date].first.to_s  %>
+<% if results.count >= 1 && results.first.date.to_s == params[:date]  %>
 <div class="container search-result">
   <h2>Search results:</h2><br>
 </div>
