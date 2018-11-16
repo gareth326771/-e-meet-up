@@ -1,4 +1,4 @@
-class AttendancesController < ApplicationController
+  class AttendancesController < ApplicationController
 
   def index
     @user = current_user
@@ -26,5 +26,13 @@ class AttendancesController < ApplicationController
   def show
     @attendance = Attendance.find(params[:id])
     authorize @attendance
+  end
+
+  def destroy
+    @attendance = Attendance.find(params[:id])
+    authorize @attendance
+    @attendance.destroy
+    flash[:info] = "Event deleted"
+    redirect_to attendances_path
   end
 end

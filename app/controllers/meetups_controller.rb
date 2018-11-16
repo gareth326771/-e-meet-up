@@ -1,10 +1,8 @@
 class MeetupsController < ApplicationController
   def index
-
     @meetups = policy_scope(Meetup)
     #@meetups = Meetup.all
     authorize @meetups
-
   end
 
   def show
@@ -21,6 +19,7 @@ class MeetupsController < ApplicationController
 
   def update
     @meetup = Meetup.find(params[:id])
+    authorize @meetup
     if @meetup.update(meetup_params)
       redirect_to meetup_path(@meetup)
     else
@@ -48,14 +47,13 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.find(params[:id])
     authorize @meetup
     @meetup.destroy
-    redirect_to meetups_path
+    flash[:info] = "Event deleted"
+    redirect_to attendances_path
   end
 
   private
 
   def meetup_params
     params.require(:meetup).permit(:location, :capacity, :date, :description, :price, :game, :photo)
-
   end
-
 end
