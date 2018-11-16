@@ -19,6 +19,7 @@
     <%= render 'shared/navbar' unless current_page?('/') %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <%= render 'shared/navbar' unless @disable_footer %>
     <% %>
 
     <%= javascript_include_tag 'application' %>
