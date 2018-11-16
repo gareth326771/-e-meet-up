@@ -19,6 +19,8 @@
     <%= render 'shared/navbar' unless current_page?('/') %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <% %>
+    <%= render 'shared/footer' unless @disable_footer %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag "map" %>

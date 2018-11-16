@@ -1,0 +1,36 @@
+.containerall {
+  background-color: rgba(20,20,20,0.9);
+  box-shadow: -1px, 0, 0, rgba(200,200,200,0.8);
+  width: 100vw;
+  height: 35vh;
+}
+.socialMedia {
+  right: 0px;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(140,140,140, 0.5);
+  text-shadow: 1px 1px 0 rgba(200,200,200,0.8);
+  font-size: 40px;
+}
+.smlinks {
+  color: rgba(140,140,140, 0.5);
+}
+.smlinks:hover {
+  opacity: 0.9;
+  transform: translatey(1px);
+  color: rgba(140,140,140, 0.9);
+}
+.links {
+  list-style: none;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  li {
+    margin-bottom: 2px;
+  }
+
+}
+h4 {
+  color: white;
+}
