@@ -1,4 +1,4 @@
-class AttendancesController < ApplicationController
+  class AttendancesController < ApplicationController
 
   def index
     @user = current_user
